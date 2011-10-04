@@ -1,3 +1,9 @@
+Quimica Comision 20525
+Catedra Di Risio
+Roberto Candal
+Gustavo Castro
+--------------------------------------------------------------------------------
+
 Todas las sustancias estan formadas por _atomos_, y en la mayoria de ellas los atomos se agrupan formando _moleculas_.
 
 Las moleculas pueden estar formadas por un solo atomo (monoatomicas) como en el caso de los gases nobles.
@@ -97,6 +103,35 @@ Uniones IONICAS:
 El enlace ionico se produce entre elementos de baja energia de ionizacion y aniones de elementos muy electronegativos.
 La mayoria de los compuestos ionicos binarios estan formados por elementos de los grupos 1 y 2 (metales) con los de los grupos 16 y 17 (no metales).
 
+Numero de oxidacion:
+El número de oxidación es un número entero que representa el número de electrones que un átomo pone en juego cuando forma un compuesto determinado.
+(http://www.alonsoformula.com/inorganica/numero_oxidacion.htm)
+
+Fórmulas: El elemento que se escribe a la izquierda es el más electropositivo (el que tiene número de oxidación positivo), y a la derecha se escribe el más electronegativo (el que tiene número de oxidación negativo). Estas posiciones en general coinciden con la localización que tienen estos elementos en la tabla periódica, los electropositivos a la izquierda y los electronegativos a la derecha.
+Nombres: Se nombra primero el elemento que escribimos a la derecha en la fórmula y después el elemento que se escribe a la izquierda.
+(http://www.alonsoformula.com/inorganica/mecanica.htm)
+
+En todo compuesto químico neutro, el número de oxidación aportado por la parte electropositiva debe coincidir en valor absoluto con el de la parte electronegativa, es decir, la carga total debe ser nula. Por lo tanto debemos calcular cuántos átomos de cada elemento debe haber para que el compuesto sea eléctricamente neutro.
+
+Sustancias (http://www.alonsoformula.com/inorganica/tipos_de_substancias.htm)
+Sustancias de un sólo elemento:
+Sustancias simples.   Xn
+
+Sustancias de dos elementos:
+Óxidos de metales.   MnOm
+Óxidos de no metales.   NMnOm
+Compuestos metal - no metal.   MnNMm
+Compuestos no metal - no metal.   NMnNMm
+Hidruros.   MHn
+Hidrácidos.   HnNM
+Hidrógeno con no metal.   NMHn
+
+Sustancias de tres o más elementos:
+Hidróxidos.   M(OH)n
+Oxácidos.   HaXbOc
+Oxisales neutras.   Mn(XbOc)m
+Oxisales ácidas.   Mn(HXbOc)m
+
 --------------------------------------------------------------------------------
 NOMENCLATURA
 
@@ -112,16 +147,17 @@ Iones: ion [elemento].
     H^-: hidruro
     S^2--: sulfuro
 
-
-
-
-
-
-
-
-
-
-
+Hidruro Metalico
+Hidruro no Metalico
+Oxoacidos Metalicos
+Oxoacidos No Metalicos
+Sales Binarias
+Hidroxidos
+Oxoacidos
+Oxosales
+Hidrogenosales (sales acidas)
+Hidrogenooxosales (sales acidas)
+Oxoaniones
 
 
 --------------------------------------------------------------------------------
