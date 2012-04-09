@@ -1,3 +1,6 @@
+VECTORES
+========
+
 Vectores en R² y R³
 
 Vectores equivalentes: igual direccion longitud y sentido.
@@ -5,53 +8,67 @@ Vectores equivalentes: igual direccion longitud y sentido.
 A = (a₁, a₂, …, an) B = (b₁, b₂, …, bn)
 
 * A + B = (a₁+b₁, a₂+b₂, …, an+bn)
-* Si c pertenece a R, cA = (c(a₁), c(a₂), …, c(an))
+* Si c pertenece a R, c(A) = (c(a₁), c(a₂), …, c(an))
 
 Propiedades:
 
-1) A + (B+C) = (A+B)+C
+1) A + (B + C) = (A + B) + C
 2) A + B = B + A
-3) Si c pertenece a R, c(A+B) = cA + cB
-4) Si c₁, c₂ pertenecen a R, (c₁+c₂)A = c₁A + c₂B y (c₁c₂)A = c₁(c₂A)
-5) ō + A = A
-6) 1 A = A
-7) A + (-1) A = 0
-8) 0A = 0
+3) Si c pertenece a R, c(A + B) = c(A) + c(B)
+4) Si c₁, c₂ pertenecen a R, (c₁ + c₂)(A) = c₁(A) + c₂(B) y (c₁c₂)(A) = (c₁)(c₂A)
+5) Ō + A = A
+6) (1) (A) = A
+7) A + (-1)(A) = 0
+8) ŌA = Ō
 
-* Siendo A, B, C y D puntos, AB es equivalente a CD sii D - C = B - A
+* Siendo a, b, c y d puntos, ab es equivalente a cd sii (d - c) = (b - a)
 * AB // CD sii (B - A) = k(D - C) y k ≠ 0.
 
-La norma de un vector es igual a su longitud.
+Punto Medio
+===========
 
-||A|| = sqrt(a₁² + a₂² + … + an²)
+  P1/2(A, B) = 1/2(A+B) = (1/2)A + (1/2)B
+
+Segmento
+========
+
+  Existe t perteneciente a [0; 1] tal que X = (t)A + (1-t)B
+  (si t = 0.5 se obtiene el punto medio)
+
+NORMA
+=====
+
+La norma de un vector es una medida de su longitud.
+
+  ||A|| = sqrt(a₁² + a₂² + … + an²)
 
 Propiedades:
 
-1) Si A = ō, ||A|| = 0, si A ≠ Ō, entonces ||A|| > 0
+1) Si A = Ō, ||A|| = 0, si A ≠ Ō, entonces ||A|| > 0
 2) ||A|| = ||-A||
-3) Si c pertenece a R, ||cA|| = |c|||A||
+3) Si c pertenece a R, ||(c)(A)|| = |c| ||A||
 4) ||A + B|| ≤ ||A|| + ||B||
 
-Distancia entre puntos A y B: la longitud del vector AB:
+DISTANCIA entre puntos A y B: es igual a la norma del vector AB:
 
 d(A, B) = ||B - A|| = sqrt((b₁ - a₁)² + (b₂ - a₂)² + … + (bn - an)²)
 
 d(A, A) = 0
 
-Producto escalar: (inner product)
------------------
+PRODUCTO ESCALAR (inner product)
+================================
 
 A.B = a₁b₁ + a₂b₂ + … + anbn
 
 Propiedades:
 
 1) A.B = B.A
-2) A.(B+C) = A.B + A.C = (B+C).A
+2) A.(B + C) = A.B + A.C = (B + C).A
 3) Si k pertence a R, (kA).B = k(A.B) = A.(kB)
 4) Si A = Ō, A.A = 0. Si A ≠ Ō, A.A > 0.
 5) |A.B| ≤ ||A|| ||B||
 6) ||A|| = sqrt(A.A)
-7) A.Õ = 0
+7) A.Ō = 0
 
 Un vector con modulo 1 se obtiene a partir de cualquier otro dividiendo por su modulo:
 
@@ -61,13 +78,14 @@ El angulo theta entro dos vectores A y B (siempre ≤ pi) se obtiene mediante:
 
 A.B = ||A|| ||B|| cos(theta)
 
-* Si A y B son ortogonales: A.B = 0
+* Si A y B son ortogonales, theta = pi/2, entonces A.B = 0
 * Si A y B son paralelos, entonces theta = 0 o theta = pi, por lo tanto:
 
   A.B =    ||A|| ||B||   (theta = 0), o
   A.B = -( ||A|| ||B|| ) (theta = pi)
 
-Proyecciones:
+Proyecciones
+============
 
   proj-B(A) = ( A.B  )(B)
                ||B||²
@@ -75,7 +93,8 @@ Proyecciones:
   proj-A(B) = ( A.B  )(A)
                ||A||²
 
-Cosenos directores:
+Cosenos directores
+==================
 
 cos alpha = A.i / ||A|| = a1 / ||A||
 cos beta  = A.j / ||A|| = a2 / ||A||
@@ -89,19 +108,13 @@ A en funcion de su vector cosenos-directores:
 
   A = ||A|| * <cos alpha, cos beta, cos gamma>
 
-Punto Medio:
+Rectas alabeadas
+================
 
-  P1/2(A, B) = 1/2(A+B) = (1/2)A + (1/2)B
-
-Segmento:
-
-  Existe t perteneciente a [0; 1] tal que X = (t)A + (1-t)B
-  (si t = 0.5 se obtiene el punto medio)
-
-Rectas alabeadas: cuando dos rectas en R³ no son paralelas ni se cruzan.
+Cuando dos rectas en R³ no son paralelas ni se cruzan.
 
 Producto Vectorial (R³)
-------------------
+=======================
 
 A = <a1, a2, a3>,
 B = <b1, b2, b3>
@@ -112,12 +125,15 @@ Propiedades:
 1) AxB = -BxA
 2) Ax(B+C) = AxB + AxC
    (B+C)xA = BxA + CxA
+
 3) Si k pertenece a R, (kA)xB = k(AxB) = Ax(kB)
 4) AxA = Ō
 5) AxB es un vector perpendicular a A y B.
 6) ||AxB||² = ||A||² + ||B||² - (A.B)²
+
 7) ||AxB|| = ||A|| ||B|| |sen(theta)| (theta es el angulo entre A y B)
    Geometricamente, ||AxB|| es el area del parelelogramo de vertices O, A, B, A+B
+
 8) (UxV).W = U.(VxW)
 
 Si A y B son paralelos, el angulo entre A y B es o 0 o pi, entonces:
@@ -129,13 +145,14 @@ Si AxB ≠ Ō entonces AxB es perpendicular a A y a B.
 Si A, B y C son vectores, el volumen del parelelepipedo definido entre ellos es:
   (AxB).C
 
-Si los 3 vectores estan en el mismo plano, el volumen debe dar 0:
+Si los 3 vectores apuntan a puntos del mismo plano, el calculo del volumen
+comprendido debe dar 0:
 
   A.(BxC) = |a₁ a₂ a₃| = a₁(b₂c₃-b₃c₂) - a₂(b₁c₃-b₃c₁) + a₃(b₁c₂-b₂c₁) = 0
             |b₁ b₂ b₃|
             |c₁ c₂ c₃|
-
-Planos:
+Planos
+======
 
      z
      |
