@@ -167,3 +167,59 @@ Planos
 Si Q = <x, y, z>, entonces <x, y, 0> es la proyeccion del punto en el plano xy.
 Si Q = <x, y, z>, entonces <x, 0, z> es la proyeccion del punto en el plano xz.
 Si Q = <x, y, z>, entonces <0, y, z> es la proyeccion del punto en el plano yz.
+
+Ecuacion Lineas en R³
+=====================
+
+Una recta se define en el espacio segun un vector paralelo y un punto que la contenga, tal que:
+
+Si V = <a, b, c> es el vector director y P₀ = <X₀, Y₀, Z₀> el punto de la recta:
+
+  R = P₀ + tV = <X₀, Y₀, Z₀> + t <a, b, c> = <x, y, z> de la recta (forma vectorial).
+
+La forma parametrica se calcula en funcion de cada variable x, y, z:
+
+    <x, y, z> = <X₀+ta, Y₀+tb, Z₀+tc>, entonces:
+
+    x = X₀+ta
+    y = Y₀+tb
+    z = Z₀+tc
+
+Despejando t de todas estas ecuaciones se obtiene la forma simetrica:
+
+   (x - X₀) / a = (y - Y₀) / b = (z - Z₀) / c
+
+En la forma simetrica, si a, b o c es = 0 se remueve la ecuacion y se coloca
+x = x0, y = y0 o z = z0 segun corresponda.
+
+Ecuacion de Planos en R³
+========================
+
+Siendo P₀ un punto del plano, n un vector normal al plano, P un punto cualquiera
+del plano, r el vector OP y r₀ el vector OP₀:
+
+* r-r₀ es un vector contenido en el plano
+* Si r-r₀ esta contenido en el plano entonces el producto escalar con la normal
+  debe ser 0.
+
+  n.(r-r₀) = 0
+
+Esta es la forma vectorial del plano. Desarrollando:
+
+  n = <a, b, c>
+  r = <X, Y, Z>
+  r₀ = <X₀, Y₀, Z₀>
+
+  <a, b, c> . (<X, Y, Z> - <X₀, Y₀, Z₀>) = 0
+
+  a(X - X₀) + b(Y - Y₀) + c(Z - Z₀) = 0
+
+Esta es la forma escalar del plano. Distribuyendo:
+
+  aX + bY + cZ = (aX₀ + bZ₀ + cZ₀ = d)
+
+Esta es una forma habitual en la que se presenta la ecuacion escalar del plano.
+Los factores que acomañan a X, Y y Z son los componentes del vector normal al
+plano.
+
+
