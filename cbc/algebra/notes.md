@@ -15,7 +15,7 @@ Propiedades:
 1) A + (B + C) = (A + B) + C
 2) A + B = B + A
 3) Si c pertenece a R, c(A + B) = c(A) + c(B)
-4) Si c₁, c₂ pertenecen a R, (c₁ + c₂)(A) = c₁(A) + c₂(B) y (c₁c₂)(A) = (c₁)(c₂A)
+4) Si c₁, c₂ pertenecen a R, (c₁ + c₂)(A) = c₁(A) + c₂(A) y (c₁c₂)(A) = (c₁)(c₂A)
 5) Ō + A = A
 6) (1) (A) = A
 7) A + (-1)(A) = 0
@@ -49,7 +49,10 @@ Propiedades:
 3) Si c pertenece a R, ||(c)(A)|| = |c| ||A||
 4) ||A + B|| ≤ ||A|| + ||B||
 
-DISTANCIA entre puntos A y B: es igual a la norma del vector AB:
+DISTANCIA
+=========
+
+La distancia entre los puntos A y B: es igual a la norma del vector AB:
 
 d(A, B) = ||B - A|| = sqrt((b₁ - a₁)² + (b₂ - a₂)² + … + (bn - an)²)
 
@@ -222,4 +225,23 @@ Esta es una forma habitual en la que se presenta la ecuacion escalar del plano.
 Los factores que acomañan a X, Y y Z son los componentes del vector normal al
 plano.
 
+Distancia punto-plano
+=====================
 
+Es la menor distancia desde el punto a los infinitos puntos del plano.
+
+Esta distancia corresponde a la perpendicular trazada desde el punto al
+plano.
+
+Si P = <X0, Y0, Z0) y Pi = AX +BY +CZ + D = 0
+
+D(P, Pi) = |AX0 + BY0 +CZ0 + D| / sqrt(A² + B² + C²)
+
+Distancia entre planos paralelos: Se calcula hallando la distancia a un
+punto cualquiera de uno de ellos al otro. Si los planos comparten la
+normal, se puede calcular como:
+
+P1 = Ax + By + Cz + D1 = 0
+P2 = Ax + By + Cz + D2 = 0
+
+D(P1, P2) = |D2 - D1| / sqrt(A² + B² + C²)
