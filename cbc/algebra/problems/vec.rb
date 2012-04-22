@@ -17,5 +17,6 @@ puts(c(0) == p3)
 puts(c(1) == p4)
 
 puts(b(0) + 3*c(1/3.0))
+puts
 
 check(true) { b(0) == p1 }

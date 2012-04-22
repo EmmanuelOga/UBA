@@ -4,8 +4,15 @@ require 'sourcify'
 require 'matrix'
 require 'tablizer'
 
+$header = true
+HEADER = ["Function", "Arguments", "Result", "Matches"]
+
 def check(val, *args, &fun)
-  table = Tablizer::Table.new([["Function", "Arguments", "Result", "Matches"]], header: true)
+  if $header
+    table, row = Tablizer::Table.new([HEADER], header: true), 1
+  else
+    table, row = Tablizer::Table.new, 0
+  end
 
   result = fun.call(*args)
 
@@ -16,13 +23,26 @@ def check(val, *args, &fun)
           end
 
   result = sprintf("%0.1f", result) if result.is_a?(Numeric)
+  result = result.to_s
 
-  args = args.map { |n| sprintf("%0.1f", n).ljust(4) }.join(", ")
+  args = args.map do |n|
+    case n
+    when Numeric
+      sprintf("%0.1f", n).ljust(4)
+    else
+      n.to_s
+    end
+  end.join(", ")
 
-  table[0, 1] = fun.to_source[6..-3].strip.gsub(/\n/, '')
-  table[1, 1] = args
-  table[2, 1] = result
-  table[3, 1] = truth ? truth.to_s.color(:green) : truth.to_s.color(:red)
+  source = fun.to_source[6..-3].strip.gsub(/\n/, '')
+
+  maxlen = 80
+  too_long = source.length + result.length + args.length > maxlen
+
+  table[0, row] = too_long ? source[0..maxlen/3] : source
+  table[1, row] = too_long ? "#{args.to_s[0...maxlen/2].color(:blue)} ..." : args
+  table[2, row] = too_long ? "#{result.to_s[0...maxlen/2].color(:blue)} ..." : result
+  table[3, row] = truth ? truth.to_s.color(:green) : truth.to_s.color(:red)
 
   puts table
 end
@@ -36,5 +56,15 @@ end
 def let(name, &block)
   self.class.class_eval do
     define_method(name, &block)
+  end
+end
+
+def banner(msg)
+  puts "\n#{msg.color(:magenta)}\n\n"
+end
+
+class Matrix
+  def table
+    Tablizer::Table.new(to_a, align: :ansi_rjust).to_s
   end
 end
