@@ -68,3 +68,41 @@ class Matrix
     Tablizer::Table.new(to_a, align: :ansi_rjust).to_s
   end
 end
+
+class TrueClass
+  def to_s
+    "true".color(:green)
+  end
+end
+
+class FalseClass
+  def to_s
+    "false".color(:red)
+  end
+end
+
+require 'rational'
+
+def r(n, d = 1)
+  Rational n, d
+end
+
+class Matrix
+  def self.from_column_vectors(cvs)
+    number_of_rows = cvs.first.row_size
+    rows = (0...number_of_rows).map { |n| cvs.map { |c| c[n, 0] } }
+    Matrix[*rows]
+  end
+
+  ZERO_F = 0.1*(10**-10)
+
+  def zero?
+    all? { |n| (n.to_f).abs < ZERO_F }
+  end
+end
+
+class Rational
+  def to_s
+    self == 0 ? "0" : to_f.to_s
+  end
+end
