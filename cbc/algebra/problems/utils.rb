@@ -3,6 +3,9 @@ ENC_NONE=nil
 require 'sourcify'
 require 'matrix'
 require 'tablizer'
+require 'shellwords'
+require 'cgi'
+require 'awesome_print'
 
 $header = true
 HEADER = ["Function", "Arguments", "Result", "Matches"]
@@ -88,10 +91,27 @@ def r(n, d = 1)
 end
 
 class Matrix
+  def self.parse(str)
+    tokenize = lambda do |data, sep|
+      data.split(sep).reject { |s| s !~ /\S/ }
+    end
+
+    rows = tokenize.call(str, "\n").map! do |s|
+      comment_less = s[/([^#]+)\#?/, 1]
+      tokenize.call(comment_less, /\s+/).map(&:to_i)
+    end
+
+    Matrix[ *rows ]
+  end
+
   def self.from_column_vectors(cvs)
     number_of_rows = cvs.first.row_size
     rows = (0...number_of_rows).map { |n| cvs.map { |c| c[n, 0] } }
     Matrix[*rows]
+  end
+
+  def self.from_row_vectors(rows)
+    Matrix[*(rows.map(&:to_a).map(&:first))]
   end
 
   ZERO_F = 0.1*(10**-10)
@@ -99,10 +119,37 @@ class Matrix
   def zero?
     all? { |n| (n.to_f).abs < ZERO_F }
   end
+
+  def to_wolfram(op = "RowReduce")
+    matrix = %Q|{ #{ rows.map { |r| "{" << r.join(", ") << "}" }.join(", ") } }|
+    op ? "#{op}[[ #{matrix} ]]" : matrix
+  end
+
+  WOLFRAM_BASE = "http://www.wolframalpha.com/input/?i="
+
+  def wolfram_url(op = "RowReduce")
+    "#{WOLFRAM_BASE}#{CGI.escape to_wolfram(op)}"
+  end
+
+  def wolfram!(op = "RowReduce")
+    puts "Opening:"
+    puts table
+    system "xdg-open #{wolfram_url(op).shellescape}"
+  end
 end
 
 class Rational
   def to_s
-    self == 0 ? "0" : to_f.to_s
+  # return to_f.to_s
+    case
+    when self == 0 then "0"
+    when denominator == 1 then numerator.to_s
+    else
+      "#{numerator}/#{denominator}"
+    end
   end
+end
+
+def row(*args)
+  Matrix.row_vector(args)
 end
