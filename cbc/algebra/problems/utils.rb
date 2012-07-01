@@ -70,6 +70,24 @@ class Matrix
   def table
     Tablizer::Table.new(to_a, align: :ansi_rjust).to_s
   end
+
+  def to_s
+    table
+  end
+
+  def -@
+    self * (-1)
+  end
+end
+
+class Vector
+  def table
+    Tablizer::Table.new([to_a], align: :ansi_rjust).to_s
+  end
+
+  def -@
+    self * (-1)
+  end
 end
 
 class TrueClass
@@ -114,27 +132,51 @@ class Matrix
     Matrix[*(rows.map(&:to_a).map(&:first))]
   end
 
+  def solution(column)
+    r = rows.to_a.map(&:to_a)
+    r.each_with_index { |row, idx| row << column[idx, 0] }
+    Matrix[*r]
+  end
+
   ZERO_F = 0.1*(10**-10)
 
   def zero?
     all? { |n| (n.to_f).abs < ZERO_F }
   end
 
-  def to_wolfram(op = "RowReduce")
+  def to_wolfram(op = "Nullspace")
     matrix = %Q|{ #{ rows.map { |r| "{" << r.join(", ") << "}" }.join(", ") } }|
     op ? "#{op}[[ #{matrix} ]]" : matrix
   end
 
   WOLFRAM_BASE = "http://www.wolframalpha.com/input/?i="
 
-  def wolfram_url(op = "RowReduce")
+  def wolfram_url(op = "Nullspace")
     "#{WOLFRAM_BASE}#{CGI.escape to_wolfram(op)}"
   end
 
-  def wolfram!(op = "RowReduce")
+  def wolfram!(op = "Nullspace")
     puts "Opening:"
     puts table
     system "xdg-open #{wolfram_url(op).shellescape}"
+  end
+
+  def swap_columns(ci1, ci2)
+    dup.swap_columns!(ci1, ci2)
+  end
+
+  def swap_rows(ci1, ci2)
+    dup.swap_rows!(ci1, ci2)
+  end
+
+  def swap_columns!(ci1, ci2)
+    (0...row_size).each { |idx| self[idx, ci1], self[idx, ci2] = self[idx, ci2], self[idx, ci1] }
+    self
+  end
+
+  def swap_rows!(ri1, ri2)
+    (0...column_size).each { |idx| self[ri1, idx], self[ri2, idx] = self[ri2, idx], self[ri1, idx] }
+    self
   end
 end
 
@@ -152,4 +194,17 @@ end
 
 def row(*args)
   Matrix.row_vector(args)
+end
+
+def col(*args)
+  Matrix.column_vector(args)
+end
+
+module Enumerable
+  def permutations(n, r = Array.new(n))
+    if n == 0 then yield r else
+      nxt = n - 1; idx = length - nxt
+      each { |e| r[idx] = e; permutations(nxt, r) { yield r } }
+    end
+  end
 end
